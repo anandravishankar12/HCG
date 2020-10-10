@@ -518,7 +518,7 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 
 \section{Methodology}
 
-As the amount of generated per day grows at an exponential rate, brand new technologies have to be developed to cope up with the copius exabytes of data. Machine learning tools provide us with the capabilities to handle both structured and unstructured datasets. These tools can be configured to analyze patterns inherent in the data and make accurate predictions based on the information obtained. This concept is a reality for almost all sectors today. As per a 2020 Stanford study, the amount of healthcare data generated will be around 2,314 exabytes with a steady growth of 48\%. The pipeline  developed for this project has been depicted in Figure $\ref{img1}$. The remainder of the section descibes each individual step in detail
+As the amount of generated per day grows at an exponential rate, brand new technologies have to be developed to cope up with the copius exabytes of data. Machine learning tools provide us with the capabilities to handle both structured and unstructured datasets. These tools can be configured to analyze patterns inherent in the data and make accurate predictions based on the information obtained. This concept is a reality for almost all sectors today. As per a 2020 Stanford study, the amount of healthcare data generated will be around 2,314 exabytes with a steady growth of 48\%. The pipeline  developed for this project has been depicted in Figure $\ref{img1}$. The remainder of the section descibes each individual step in detail.
 
 \begin{figure*}[!b]
 \centering
@@ -551,7 +551,7 @@ For each of the patient, a CT scan was conducted to obtain cross-sectional image
 
 \begin{figure*}[!b]
 \centering
-\includegraphics[width=6in]{img2.png}
+\includegraphics[width=4in]{img2.png}
 \caption{Axial view with the tumor}
 \label{img2}
 \end{figure*}
@@ -603,7 +603,119 @@ Gradient & Computes the gradient of the image & -\\
 \end{tabular}
 \end{table*}
 
-To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. 
+To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. The mask image corresponding to Figure $\ref{img2}$ is shown in Figure $\ref{img3}$. Note the red mark demarcating the tumor is done by a radiologist as is standard procedure. The features are now extracted from the image set with the help of the mask file. The features extracted are descibed by the Imaging Biomarker Standardization Initiative (IBSI). The entire feature set has been shown in tables $\ref{tb3}$ and $\ref{tb4}$.
+
+\begin{figure*}[!b]
+\centering
+\includegraphics[width=4in]{img3.png}
+\caption{Mask image}
+\label{img3}
+\end{figure*}
+
+\begin{table*}[!b]
+\centering
+\caption{Features-I}
+\label{tb3}
+\begin{tabular}{| c | c || c | c |}
+\hline
+Feature Class & Feature & Feature Class & Feature\\
+\hline
+& Elongation &&Autocorrelation\\
+&Flatness&&Cluster\_Prominence\\
+&Least\_Axis\_length&&Cluster\_Shade\\
+&Major\_Axis\_Length&&Cluster\_Tendency\\
+&Max\_2D\_Diameter\_Column&&Constrast\\
+&Max\_2D\_Diameter\_Row&&Correlation\\
+&Max\_2D\_Diameter\_Slice&&Difference\_Average\\
+Shape&Max\_3D\_Diameter&&Difference\_Entropy\\
+&Mesh\_Volume&&Difference\_Variance\\
+&Minor\_Axis\_Length&&Inverse\_Variance\\
+&Sphercity&&Joint\_Average\\
+&Surface\_Area&Grey Level&Joint\_Energy\\
+&Surface\_Volume&Co-occurance Matrix&Joint\_Entropy\\
+&Voxel\_Volume&&MCC\\
+&&&Maximum\_Probability\\
+&&&Sum\_Average\\
+&&&Sum\_Entropy\\
+&&&Sum\_Squares\\
+&&&Id\\
+&&&Idm\\
+&&&Idn\\
+&&&Idmn\\
+&&&Imc1\\
+&&&Imc2\\
+\hline
+&10 Percentile&&Uniformity\\
+&90 Percentile&&Normalized\_Uniformity\\
+&Energy&&Variance\\
+&Entropy&&High\_Run\_Emphasis\\
+&Interquartile\_Range&&Long\_Run\_Emphasis\\
+&Kurtosis&&Long\_High\_Run\_Emphasis\\
+&Maximum&&Long\_Low\_Run\_Emphasis\\
+&Mean\_Absolute\_Deviation&&Low\_Run\_Emphasis\\
+First Order&Mean&Grey Level Run&Run\_Entropy\\
+Statistics&Median&Length Matrix&Run\_Uniformity\\
+&Minimum&&Run\_Uniformity\_Normalized\\
+&Range&&Run\_Percentage\\
+&Robust\_Mean\_Deviation&&Run\_Variance\\
+&Robust\_Mean\_Squared&&Short\_Run\_Emphasis\\
+&Skewness&&Short\_Run\_High\_Emphasis\\
+&Total\_Energy&&Short\_Run\_Low\_Emphasis\\
+&Uniformity&&\\
+&Variance&&\\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!b]
+\centering
+\caption{Features-II}
+\label{tb4}
+\begin{tabular}{| c | c |}
+\hline
+Feature Class & Feature\\
+\hline
+&Non\_Uniformity\\
+&Non\_Uniformity\_Normalized\\
+&Variance\\
+&High\_Zone\_Emphasis\\
+&Large\_Area\_Emphasis\\
+&Large\_Area\_High\_Level\_Emphasis\\
+&Large\_Area\_Low\_Level\_Emphasis\\
+Grey Level Size&Low\_Zone\_Emphasis\\
+Zone Matrix&Zone\_Non\_Uniformity\\
+&Zone\_Non\_Uniformity\_Normalized\\
+&Small\_Area\_Emphasis\\
+&Small\_Area\_High\_Level\_Emphasis\\
+&Small\_Area\_Low\_Level\_Emphasis\\
+&Zone\_Entropy\\
+&Zone\_Percentage\\
+&Zone\_Variance\\
+\hline
+&Dependence\_Entropy\\
+&Dependence\_Non\_Uniformity\\
+&Dependence\_Non\_Uniformity\_Normalized\\
+&Dependence\_Variance\\
+&GL\_Non\_Uniformity\\
+&GL\_Variance\\
+Gray Level Size&High\_Emphasis\\
+Zone Matrix&Large\_Dependence\_Emphasis\\
+&Large\_Dependence\_High\_Emphasis\\
+&Large\_Dependence\_Low\_Emphasis\\
+&Low\_Emphasis\\
+&Small\_Dependence\_Emphasis\\
+&Small\_Dependence\_High\_Emphasis\\
+&Small\_Dependence\_Low\_Emphasis\\
+\hline
+&Busyness\\
+Neighbouring Gray Tone&Coarseness\\
+Difference Matrix&Complexity\\
+&Constrast\\
+&Strength\\
+\hline
+\end{tabular}
+\end{table*}
+
 % Computer Society journal (but not conference!) papers do something unusual
 % with the very first section heading (almost always called "Introduction").
 % They place it ABOVE the main text! IEEEtran.cls does not automatically do
