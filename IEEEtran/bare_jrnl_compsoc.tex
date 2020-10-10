@@ -56,7 +56,8 @@
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
 % \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
-
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\newcommand\sufr[3][0pt]{$\rule{0pt}{\dimexpr#1+1.4ex\relax}^\frac{#2}{#3}$}
 
 
 
@@ -404,14 +405,15 @@
 \author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
         John~Doe,~\IEEEmembership{Fellow,~OSA,}
         and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
-\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
-of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
-GA, 30332.\protect\\
-% note need leading \protect in front of \\ to get a newline within \thanks as
-% \\ is fragile and will error, could use \hfil\break instead.
-E-mail: see http://www.michaelshell.org/contact.html
-\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops an unwanted space
-\thanks{Manuscript received April 19, 2005; revised August 26, 2015.}}
+% \IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
+% of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+% GA, 30332.\protect\\
+% % note need leading \protect in front of \\ to get a newline within \thanks as
+% % \\ is fragile and will error, could use \hfil\break instead.
+% E-mail: see http://www.michaelshell.org/contact.html
+% \IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops an unwanted space
+% \thanks{Manuscript received April 19, 2005; revised August 26, 2015.}
+}
 
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
@@ -521,13 +523,87 @@ As the amount of generated per day grows at an exponential rate, brand new techn
 \begin{figure*}[!b]
 \centering
 \includegraphics[width=6in]{img1.png}
-\caption{Pipeline}
+\caption{Project Pipeline}
 \label{img1}
 \end{figure*}
 
 \subsection{Obtaining Raw data}
 
-In order to obtain distinct yet comparable subjects, a cohort dataset of 90 patients 
+In order to obtain distinct yet comparable subjects, a cohort dataset of 89 patients was selected in this study. The dataset consisted of four intrinsic molecular subtypes of breast cancer which are contrasted on the genes a cancerous cell expresses. The dataset has been descibed in Table $\ref{tb1}$.
+
+\begin{table*}[!b]
+\centering
+\caption{Data Description}
+\label{tb1}
+\begin{tabular}{| c | c | c | c | c | c |}
+\hline
+Subtype & Number of paitents & Estrogen Receptor & Progesterone Receptor & HER2 & KI67 range\\
+\hline
+Luminal A & 29 & + & +/- & - & [5,20] \\
+Luminal B & 36 & + & +/- & +/- & [25,80] \\
+Triple Negative & 19 & - & - & - & [20,90] \\
+HER & 5 & - & - & + & [30,50]\\
+\hline
+\end{tabular}
+\end{table*}
+
+For each of the patient, a CT scan was conducted to obtain cross-sectional images of the hypothesised tumor location. CT scans provide a more detailed description of the patients condition by increasing the radiation level the patient is exposed to. Once the scan is completed three views are obtained namely, Axial, Sagittal and Coronal. A sample Axial view has been displayed in Figure $\ref{img2}$ with the distinct grey circular mass on the right depicting the tumor. DICOM (Digital Imaging and Communication in Medicine) images were obtained after the scan. For each patient 323 new studies were conducted with each study have 384 series which corresponded to 466 instances or images of the scan. Even though DICOM files are a standard format for medical imaging, NRRD (Nearly Raw Raster Data) files are anonymmized and contain no sensitive patient information. Moreover NRRD store the entire information in a single file as opposed to DICOM imaging.
+
+\begin{figure*}[!b]
+\centering
+\includegraphics[width=6in]{img2.png}
+\caption{Axial view with the tumor}
+\label{img2}
+\end{figure*}
+
+\subsection{Convert to a suitable format}
+
+As mentioned previously, NRRD provides a more insightful appraoch to understanding medical imaging and recognizing inherent patterns in a concised format. The conversion was done with the help of the Plastimatch tool which is an open source software for image computation. Plastimatch takes the DICOM image which is described in a polyline vectorized format, and converts it into a series of pixels which is more prominently known as rasterization. The subroutine for rasterization of a DICOM image set with coordiantes $x$ and $y$ is shown below.
+
+\begin{verbatim}
+def rast(x, y, shape):
+        nx, ny = draw.polygon(x, y, shape)
+        nrrd = np.zeros(shape, dtype=np.bool)
+        nrrd[ny, nx] = True 
+
+        return nrrd
+\end{verbatim}
+
+Once this step is conducted, our image is in a compressed format, rife with information. Information extraction can be conducted through multiple means such as using neural networks, OCR recognition or pattern recognition algorithms. 
+
+\subsection{Obtaining Radiomics Features}
+
+Information extraction from images directly has certain drawbacks. For eg, consider tumor classification using a standard Convolutional Neural Network (CNN). The CNN might be extremely successful in determining the existense of a blob of mass and it's exact location. However diagnosing the exact nature and feature set of the tumor is extremely difficult for a CNN. This is because a CNN views the image as simply a collection of pixels without any regard to the information embedded in all the views of the data. 
+
+To tackle this issue, we have utilized radiomics algorithms to extract feature sets from the medical images to reveal characteristics which are not captured by trained networks. The open-source Python library, PyRadiomics was used to mine out the required feature set. Before the actual extraction could be performed, a set of filters were applied on the NRRD to provide a comprehensive view of the data. The filters applied are listed in table $\ref{tb2}$. 
+
+\begin{table*}[!b]
+\centering
+\caption{Applied Filters}
+\label{tb2}
+\begin{tabular}{| c | c | c |}
+\hline
+Filter & Description & Equation\\
+\hline
+Wavelet & Selective emphasizing or de-emphasizing of image in selected spatial frequency domain & -\\
+\hline
+Square & Square the image intensities & x := (cx)\textsuperscript{2}\\
+\hline
+Square Root & Compute root of image intensities & x := $\sqrt{cx}$\\
+\hline
+Laplacian of Gaussian & Applies a Laplacian of Gaussian filter to the input image  & $\frac{1}{(\sigma\sqrt{2\pi})\textsuperscript{3}}e\textsuperscript{-\sufr{x\textsuperscript{2}+y\textsuperscript{2}+z\textsuperscript{2}}{2\sigma\textsuperscript{2}}}$\\
+&and yields a derived image for each sigma value specified&\\
+\hline
+Logarithm & Computes the natural logarithm of image intensities & c$\log(x+1)$\\
+\hline
+Exponential & Computes the exponential of the original image & e\textsuperscript{cx}\\
+\hline
+Gradient & Computes the gradient of the image & -\\
+\hline
+\end{tabular}
+\end{table*}
+
+To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. 
 % Computer Society journal (but not conference!) papers do something unusual
 % with the very first section heading (almost always called "Introduction").
 % They place it ABOVE the main text! IEEEtran.cls does not automatically do
@@ -640,24 +716,7 @@ In order to obtain distinct yet comparable subjects, a cohort dataset of 90 pati
 % the IEEE normally uses this smaller font for tables.
 % The \label must come after \caption as always.
 %
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+
 
 
 % Note that the IEEE does not put floats in the very first column
