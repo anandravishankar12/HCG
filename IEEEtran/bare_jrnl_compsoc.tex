@@ -586,13 +586,14 @@ To tackle this issue, we have utilized radiomics algorithms to extract feature s
 Filter & Description & Equation\\
 \hline
 Wavelet & Selective emphasizing or de-emphasizing of image in selected spatial frequency domain & -\\
+(9)&&\\
 \hline
 Square & Square the image intensities & x := (cx)\textsuperscript{2}\\
 \hline
 Square Root & Compute root of image intensities & x := $\sqrt{cx}$\\
 \hline
 Laplacian of Gaussian & Applies a Laplacian of Gaussian filter to the input image  & $\frac{1}{(\sigma\sqrt{2\pi})\textsuperscript{3}}e\textsuperscript{-\sufr{x\textsuperscript{2}+y\textsuperscript{2}+z\textsuperscript{2}}{2\sigma\textsuperscript{2}}}$\\
-&and yields a derived image for each sigma value specified&\\
+$\sigma$ = 1, 2, 3&and yields a derived image for each sigma value specified&\\
 \hline
 Logarithm & Computes the natural logarithm of image intensities & c$\log(x+1)$\\
 \hline
@@ -603,7 +604,7 @@ Gradient & Computes the gradient of the image & -\\
 \end{tabular}
 \end{table*}
 
-To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. The mask image corresponding to Figure $\ref{img2}$ is shown in Figure $\ref{img3}$. Note the red mark demarcating the tumor is done by a radiologist as is standard procedure. The features are now extracted from the image set with the help of the mask file. The features extracted are descibed by the Imaging Biomarker Standardization Initiative (IBSI). The entire feature set has been shown in tables $\ref{tb3}$ and $\ref{tb4}$.
+To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. The mask image corresponding to Figure $\ref{img2}$ is shown in Figure $\ref{img3}$. Note the red mark demarcating the tumor is done by a radiologist as is standard procedure. The features are now extracted from the image set with the help of the mask file. The features extracted are descibed by the Imaging Biomarker Standardization Initiative (IBSI). The features have been shown in tables $\ref{tb3}$ and $\ref{tb4}$.
 
 \begin{figure*}[!b]
 \centering
@@ -716,6 +717,11 @@ Difference Matrix&Complexity\\
 \end{tabular}
 \end{table*}
 
+Therefore for each patient, the total number of features obtained are number of filters $\times$ number of features i.e, 17 $\times$ 100 = 1700 features. Now that the entire feature set has been collected, we can begin the classification task. 
+
+\subsection{Applying Pre-processing Techniques}
+
+From the 1700 features collected, not all of the features will contribute equally in the classification function. The process of preparing the input data for pattern learning by removing redundant characteristics, reducing noises and normalizing, selecting, and extracting features is termed as Data Pre-Processing. 
 % Computer Society journal (but not conference!) papers do something unusual
 % with the very first section heading (almost always called "Introduction").
 % They place it ABOVE the main text! IEEEtran.cls does not automatically do
