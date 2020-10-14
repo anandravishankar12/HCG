@@ -28,7 +28,7 @@
 %% consequential, or any other damages, resulting from the use or misuse
 %% of any information contained here.
 %%
-%% All comments are the opinions of their respective authors and are not
+%% All COMMENTs are the opinions of their respective authors and are not
 %% necessarily endorsed by the IEEE.
 %%
 %% This work is distributed under the LaTeX Project Public License (LPPL)
@@ -63,7 +63,7 @@
 
 
 % Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
+% (unCOMMENT the ones you want to load)
 
 
 % *** MISC UTILITY PACKAGES ***
@@ -192,7 +192,8 @@
 
 % *** SPECIALIZED LIST PACKAGES ***
 %
-%\usepackage{algorithmic}
+\usepackage{algorithmic}
+\usepackage{algorithm}
 % algorithmic.sty was written by Peter Williams and Rogerio Brito.
 % This package provides an algorithmic environment fo describing algorithms.
 % You can use the algorithmic environment in-text or within a figure
@@ -436,8 +437,8 @@
 
 
 % The paper headers
-\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
-{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
+% \markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+% {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
 % 
@@ -541,18 +542,26 @@ Subtype & Number of paitents & Estrogen Receptor & Progesterone Receptor & HER2 
 \hline
 Luminal A & 29 & + & +/- & - & [5,20] \\
 Luminal B & 36 & + & +/- & +/- & [25,80] \\
-Triple Negative & 19 & - & - & - & [20,90] \\
+Triple Negative(TN) & 19 & - & - & - & [20,90] \\
 HER & 5 & - & - & + & [30,50]\\
 \hline
 \end{tabular}
 \end{table*}
 
-For each of the patient, a CT scan was conducted to obtain cross-sectional images of the hypothesised tumor location. CT scans provide a more detailed description of the patients condition by increasing the radiation level the patient is exposed to. Once the scan is completed three views are obtained namely, Axial, Sagittal and Coronal. A sample Axial view has been displayed in Figure $\ref{img2}$ with the distinct grey circular mass on the right depicting the tumor. DICOM (Digital Imaging and Communication in Medicine) images were obtained after the scan. For each patient 323 new studies were conducted with each study have 384 series which corresponded to 466 instances or images of the scan. Even though DICOM files are a standard format for medical imaging, NRRD (Nearly Raw Raster Data) files are anonymmized and contain no sensitive patient information. Moreover NRRD store the entire information in a single file as opposed to DICOM imaging.
+For each of the patient, a CT scan was conducted to obtain cross-sectional images of the hypothesised tumor location. CT scans provide a more detailed description of the patients condition by increasing the radiation level the patient is exposed to. Once the scan is completed three views are obtained namely, Axial, Sagittal and Coronal. DICOM (Digital Imaging and Communication in Medicine) images were obtained after the scan. For each patient 323 new studies were conducted with each study have 384 series which corresponded to 466 instances or images of the scan. Even though DICOM files are a standard format for medical imaging, NRRD (Nearly Raw Raster Data) files are anonymmized and contain no sensitive patient information. Moreover NRRD store the entire information in a single file as opposed to DICOM imaging.
+
+% \begin{figure*}[!b]
+% \centering
+% \includegraphics[width=4in]{img2.png}
+% \caption{Axial view with the tumor}
+% \label{img2}
+% \end{figure*}
+
 
 \begin{figure*}[!b]
 \centering
-\includegraphics[width=4in]{img2.png}
-\caption{Axial view with the tumor}
+\includegraphics[width=7.5in]{im.png}
+\caption{untitled}
 \label{img2}
 \end{figure*}
 
@@ -604,14 +613,17 @@ Gradient & Computes the gradient of the image & -\\
 \end{tabular}
 \end{table*}
 
-To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. The mask image corresponding to Figure $\ref{img2}$ is shown in Figure $\ref{img3}$. Note the red mark demarcating the tumor is done by a radiologist as is standard procedure. The features are now extracted from the image set with the help of the mask file. The features extracted are descibed by the Imaging Biomarker Standardization Initiative (IBSI). The features have been shown in tables $\ref{tb3}$ and $\ref{tb4}$.
+PyRadiomics obtains radiomics features from the CT scan results in a stagewise manner. Initially the images are loaded into the platform by using SimpleITK which supports a gamut of image types along wit basic image processing techniques. In the next step, the filters descibed in $\ref{tb2}$ are applied using SimpleITK, PyWavelets, and Numpy. Finally, statistical and texture classes are used for feature extraction. The features so obtained, are stored in a dictionary format which suitable labels. 
 
-\begin{figure*}[!b]
-\centering
-\includegraphics[width=4in]{img3.png}
-\caption{Mask image}
-\label{img3}
-\end{figure*}
+To define a Region of Interest (ROI) and to check the dimensional constrainsts of the data, a mask file is utilized. The mask file contains the tumor's location demarcated by a radiologist. The features extracted are descibed by the Imaging Biomarker Standardization Initiative (IBSI) and have have been shown in tables $\ref{tb3}$ and $\ref{tb4}$.
+% The mask image corresponding to Figure $\ref{img2}$ is shown in Figure $\ref{img3}$. Note the red mark demarcating the tumor is done by a radiologist as is standard procedure. The features are now extracted from the image set with the help of the mask file. 
+
+% \begin{figure*}[!b]
+% \centering
+% \includegraphics[width=4in]{img3.png}
+% \caption{Mask image}
+% \label{img3}
+% \end{figure*}
 
 \begin{table*}[!b]
 \centering
@@ -717,11 +729,205 @@ Difference Matrix&Complexity\\
 \end{tabular}
 \end{table*}
 
-Therefore for each patient, the total number of features obtained are number of filters $\times$ number of features i.e, 17 $\times$ 100 = 1700 features. Now that the entire feature set has been collected, we can begin the classification task. 
+Therefore for each patient, the total number of features obtained are number of filters $\times$ number of features i.e, 17 $\times$ 100 = 1700 features. Once the entire feature set has been collected, the classification task can be started. 
 
 \subsection{Applying Pre-processing Techniques}
 
-From the 1700 features collected, not all of the features will contribute equally in the classification function. The process of preparing the input data for pattern learning by removing redundant characteristics, reducing noises and normalizing, selecting, and extracting features is termed as Data Pre-Processing. 
+From the 1700 features collected, not all of the features will contribute equally in the classification function. The process of preparing the input data for pattern learning by removing redundant characteristics, reducing noises and normalizing, selecting, and extracting features is termed as Data Pre-Processing. Multiple data pre-processing techniques have been applied to the feature set. These techniques have been descibed in Table $\ref{tb5}$.
+
+\begin{table*}[!b]
+\centering
+\caption{Preprocessing techniques}
+\label{tb5}
+\begin{tabular}{| c | c |}
+\hline
+Method & Description\\
+\hline
+Missing Value Ratio & Removal of data columns where the ratio of missing values is greater than a set threshold \\
+\hline
+Low Varience Filter & Removal of normalized data columns where the variance is lesser than a set threshold\\
+\hline
+Highest correlation filter & Removal of data columns which are highly correlated leading to redundancy\\
+\hline
+Principle Component Analysis & Transformation of data to maximize variance under constraints\\
+\hline
+Fast Independent Component Analysis & Decomposition of signals to focus on mutual independence of data \\
+\hline
+Factor Analysis & Generating a common feature by reducing number of common variables \\
+\hline
+\end{tabular}
+\end{table*}
+
+Since the number of test subjects for each class is not similar, a threshold confidence level must be specified during the hypothesis testing phase. A 'P-value' is utilized in hypothesis testing to test the hypothesis under observation. A lower p-value corresponds to a higher confidence level in the predictions. The number of features selected after the pre-processing step is directly proportional to the p-value as a higher p-value will be more accomodating of even unimportant features. A grid for different p-values was created and the corresponding number of features were obtained.   
+
+\subsection{Model-based Predictions}
+
+Once the features have been narrowed down, we use a flavour of Ensemble Learning called SFORCE to classify test subjects into the predicted classes. SFORCE establishes a symbiotic relation between a predictive model (Random Forest) and an Ensemble model (AdaBoost). Both these models work on the presented data simlutaneously, aiding each other in the prediction process. Random Forests provides a strong learning system with the occasional pitfall of overfitting. The data is classified based the features which contrast the classes with the highest information content. The process of data classification using Random Forest is shown in Algorithm $\ref{alg:rf}$. AdaBoost solves the problem of overfitting by presenting the system with the misclassified data and forcing it to improve the overall performance. The two flavours of AdaBoost i.e, SAMME and SAMME.R have been descibed in Algorithms $\ref{alg:samme}$ and $\ref{alg:sammer}$. SFORCE combines the strength of Random Forests and takes care of the  drawbacks by using a Boosting algorithm to make the search process more concentrated as shown in Algorithm $\ref{alg:sforce}$. 
+
+To obtain digital bio-markers, two cases studies were conducted from the avaiable cohort dataset. The first study involved classifying test subjects as TN or non TN subjects. In the second study, the Luminal-B dataset was set aside as the test dataset due to the close resemblance of it's characteristics with those of Luminal A. The model was trained to place the test subjects into the Luminal-A class with an accuracy of 72.7\%. The results for different p-values have been descibed in Tables $\ref{tb6}$ and $\ref{tb7}$. Based on these results,  box-plots have been obtained for the selected features which act as bio-markers for future reference.
+
+
+\begin{table*}[!b]
+\centering
+\caption{TN vs Non-TN}
+\label{tb6}
+\begin{tabular}{| c | c | c | c |}
+\hline
+P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
+\hline
+1&21&81.25&90.39\\
+\hline
+0.5&16&90.39&93.25\\
+\hline
+0.1&6&75&81.25\\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!b]
+\centering
+\caption{HER vs Luminal-A vs TN}
+\label{tb7}
+\begin{tabular}{| c | c | c | c |}
+\hline
+P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
+\hline
+1E-5&17&72&63.63\\
+\hline
+1E-6&15&70&72.7\\
+\hline
+17-5&13&72.7&70\\
+\hline
+\end{tabular}
+\end{table*}
+
+% \begin{algorithm}
+% \begin{algorithmic}[1]
+% \STATE Start
+% \end{algorithmic}
+% \end{algorithm}
+\begin{algorithm}[!t]
+\caption{: Ensemble Learning: Random Forest}\label{alg:rf}
+\begin{algorithmic}[1]
+\footnotesize
+\STATE \textbf{// Input:} Data Set D = \{(\(x_1, y_1\)),(\(x_2, y_2\)), \dots\, ((\(x_m, y_m\))\}, Feature Set F, Randomization Factor R, Number of trees T 
+\\\textbf{// Output:} Root node of i\textsuperscript{th} tree
+\STATE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\FOR { $ \forall i \in \{1, 2, \dots\, T\}$ } 
+\STATE {$ N_i \gets$ Root node of i\textsuperscript{th} tree}
+\IF {All targets belong to same class i.e $ y_i $ or $F \in \emptyset $ }
+\STATE { Return $N_i$}
+\ENDIF
+%\If {$F \in \emptyset $} \STATE { Return $N_i$} \ENDIF
+\STATE { $ D_i \leftarrow $ bootstraped sample from D }  
+\FOR {Each node}
+\STATE { $ f \leftarrow $ Randomly selected $ R $ features from $ F $ }
+\STATE { $ N_f \leftarrow $ Best Feature from $ f $ features }
+\STATE { $ N_p \leftarrow $ Best Split based on $ N_f $ }
+\ENDFOR
+\ENDFOR
+\STATE { \textbf{ return $ N_i $ } }
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!t]
+\caption{: Stagewise Additive Modeling: SAMME }\label{alg:samme}
+\begin{algorithmic}[1]
+\footnotesize
+%\\\textbf{// Purpose:} Pairwise Sequence Alignment of query sequences and reference index elements with DP algorithms
+\STATE \textbf{// Input:} Data Set D = \{(\(x_1, y_1\)),(\(x_2, y_2\)), \dots\, ((\(x_m, y_m\))\}, Number of Learning Rounds T, Learning Algorithm $ \epsilon $  
+\STATE \textbf{// Output:} sign($\sum_{t=1}^{T} \alpha_t.C_t$)
+\STATE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\STATE \emph{$D_1$(x)} = 1/m \COMMENT{Initialize the weight distribution}
+\FOR { $ t = \{1, 2, \dots\, T\}$ } 
+\STATE \emph{$C_t$} = $\epsilon$(D,\emph{$D_t$}) \COMMENT{Create classifier $C_t$}
+\STATE $e_t$ = \emph{$P_{x \sim \emph{D}}$}(\emph{$h_t$(x) $\neq$ f(x)}) \COMMENT{Calculate error $e_t$}
+\STATE $\alpha_t$ = $log{\dfrac{1-e_t}{e_t}}$ + log($\emph{K-1}$) \COMMENT{Calculate the weight $h_t$}
+\STATE \emph{$D_i$(x)} $\leftarrow$ \emph{$D_i$(x)}.exp($\alpha_t$.P($\emph{$C_i$} \neq f(x)$)) \COMMENT{Update the distribution $D_t$}, $ i = \{1, 2, \dots\, m\}$
+\STATE {Renormalize \emph{$D_t$(x)}}
+\ENDFOR 
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!t]
+\caption{: Stagewise Additive Modeling for Real Value Predictions: SAMME.R }\label{alg:sammer}
+\begin{algorithmic}[1]
+\footnotesize
+%\\\textbf{// Purpose:} Pairwise Sequence Alignment of query sequences and reference index elements with DP algorithms
+\STATE \textbf{// Input:} Data Set D = \{(\(x_1, y_1\)),(\(x_2, y_2\)), \dots\, ((\(x_m, y_m\))\}, Number of Learning Rounds T, Learning Algorithm $ \epsilon $  
+\STATE \textbf{// Output:} sign($\sum_{t=1}^{T} \alpha_t.C_t$)
+\STATE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\STATE \emph{$D_1$(x)} = 1/m \COMMENT{Initialize the weight distribution}
+\FOR { $ t = \{1, 2, \dots\, T\}$ } 
+\STATE \emph{$C_t$} = $\epsilon$(D,\emph{$D_t$}) \COMMENT{Create classifier $C_t$}
+\STATE {$p_{kt}(x)$ = Prob($y=k|x$)}, $ k = \{1, 2, \dots\, K\}$
+\STATE {$h_{kt}(x)$} $\leftarrow$ ($K$ - 1)($log{p_{kt}(x)}$ - $\dfrac{1}{K}.\sum_{k'} log{p_{k't}}$(x))
+%\STATE $e_t$ = \emph{$P_{x~\emph{D}}$}(\emph{$h_t$(x) $\neq$ f(x)}) \COMMENT{Calculate error $e_t$}
+%\STATE $\alpha_t$ = $log{\dfrac{1-e_t}{e_t}}$ + log($\emph{K-1}$) \COMMENT{Calculate the weight $h_t$}
+\STATE \emph{$D_i$(x)} $\leftarrow$ \emph{$D_i$(x)}.exp($\dfrac{1-K}{K}$.$y_{i}^{ \textbf{T} }.log({p_t}(x_i)$)    ) \COMMENT{Update the distribution $D_t$, $ i = \{1, 2, \dots\, m\}$ }
+\STATE {Renormalize \emph{$D_t$(x)}}
+\ENDFOR 
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!t]
+\caption{: Ensemble of Ensemble: SFORCE}\label{alg:sforce}
+\begin{algorithmic}[1]
+\footnotesize
+%\\\textbf{// Purpose:} Pairwise Sequence Alignment of query sequences and reference index elements with DP algorithms
+\STATE \textbf{// Input:} Data Set D = \{(\(x_1, y_1\)),(\(x_2, y_2\)), \dots\, ((\(x_m, y_m\))\}, Feature Set F, Randomization Factor R, Number of trees T,Number of Learning Rounds T', Learning Algorithm $ \epsilon $   
+\STATE \textbf{// Output:} Root node of i\textsuperscript{th} Boosted Tree
+\STATE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\STATE{Random Forest}
+\FOR { $ \forall i \in \{1, 2, \dots\, T\}$ } 
+\STATE {$ N_i \gets$ Root node of i\textsuperscript{th} tree}
+\IF {All targets belong to same class i.e $ y_i $ or $F \in \emptyset $ } 
+\STATE Call SAMME.R with {$N_i$} 
+\ENDIF
+%\If {$F \in \emptyset $} \STATE { Return $N_i$} \ENDIF
+\STATE { $ D^i \leftarrow $ bootstraped sample from D }  
+\FOR {Each node}
+\STATE { $ f \leftarrow $ Randomly selected $ R $ features from $ F $ }
+\STATE { $ N_f \leftarrow $ Best Feature from $ f $ features }
+\STATE { $ N_p \leftarrow $ Best Split based on $ N_f $ }
+\STATE Call SAMME.R with {$N_i$}
+\ENDFOR
+\ENDFOR
+\STATE { \textbf{ return $ N_i $ } }
+\STATE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\STATE{SAMME/SAMME.R}
+\STATE \emph{$D_1$(x)} = 1/m \COMMENT{Initialize the weight distribution}
+\FOR { $ t = \{1, 2, \dots\, T\}$ } 
+\STATE \emph{$C_t$} = $\epsilon$(D,\emph{$D_t$}) \COMMENT{Create classifier $C_t$}
+\STATE {$p_{kt}(x)$ = Prob($y=k|x$)}, $ k = \{1, 2, \dots\, K\}$
+\STATE {$h_{kt}(x)$} $\leftarrow$ ($K$ - 1)($log{p_{kt}(x)}$ - $\dfrac{1}{K}.\sum_{k'} log{p_{k't}}$(x))
+%\STATE $e_t$ = \emph{$P_{x~\emph{D}}$}(\emph{$h_t$(x) $\neq$ f(x)}) \COMMENT{Calculate error $e_t$}
+%\STATE $\alpha_t$ = $log{\dfrac{1-e_t}{e_t}}$ + log($\emph{K-1}$) \COMMENT{Calculate the weight $h_t$}
+\STATE \emph{$D_i$(x)} $\leftarrow$ \emph{$D_i$(x)}.exp($\dfrac{1-K}{K}$.$y_{i}^{ \textbf{T} } .log({p_t}(x_i)$)    ) \COMMENT{$ i = \{1, 2, \dots\, m\}$}
+\STATE {Renormalize \emph{$D_t$(x)}}
+\STATE Call Random Forest with {($\sum_{t=1}^{T'} \alpha_t.C_t$)}
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!t]
+\caption{untitled}\label{main}
+\begin{algorithmic}[1]
+\footnotesize
+\STATE //Input Image dataset $D\textsubscript{n}$ and masks $D\textsubscript{m}$ 
+\STATE //Output Predicted Class
+\FOR {Each image $i$ in $D\textsubscript{n}$}
+\STATE Convert image to a suitable format using conversion software
+\STATE Call the pre-processsing techniques on the formatted images
+\STATE Using mask $j$ for corresponding $i$, extract radiomics features
+\STATE Create a grid of p-values
+\FOR {EACH value in grid}
+\STATE Call Algorithm $\ref{alg:sforce}$ with related feature set
+\ENDFOR
+\STATE Obtain accuracy levels and digital bio-markers
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
 % Computer Society journal (but not conference!) papers do something unusual
 % with the very first section heading (almost always called "Introduction").
 % They place it ABOVE the main text! IEEEtran.cls does not automatically do
@@ -846,12 +1052,12 @@ From the 1700 features collected, not all of the features will contribute equall
 % Note that, LaTeX2e, unlike IEEE journals/conferences, places
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
-
-
-
-
-\section{Conclusion}
-The conclusion goes here.
+% 
+% 
+% 
+% 
+% \section{Conclusion}
+% The conclusion goes here.
 
 
 
@@ -872,27 +1078,27 @@ The conclusion goes here.
 %
 
 
-\appendices
-\section{Proof of the First Zonklar Equation}
-Appendix one text goes here.
-
-% you can choose not to have a title for an appendix
-% if you want by leaving the argument blank
-\section{}
-Appendix two text goes here.
-
-
-% use section* for acknowledgment
-\ifCLASSOPTIONcompsoc
-  % The Computer Society usually uses the plural form
-  \section*{Acknowledgments}
-\else
-  % regular IEEE prefers the singular form
-  \section*{Acknowledgment}
-\fi
-
-
-The authors would like to thank...
+% \appendices
+% \section{Proof of the First Zonklar Equation}
+% Appendix one text goes here.
+% 
+% % you can choose not to have a title for an appendix
+% % if you want by leaving the argument blank
+% \section{}
+% Appendix two text goes here.
+% 
+% 
+% % use section* for acknowledgment
+% \ifCLASSOPTIONcompsoc
+%   % The Computer Society usually uses the plural form
+%   \section*{Acknowledgments}
+% \else
+%   % regular IEEE prefers the singular form
+%   \section*{Acknowledgment}
+% \fi
+% 
+% 
+% The authors would like to thank...
 
 
 % Can use something like this to put references on a page
