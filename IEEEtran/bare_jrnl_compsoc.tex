@@ -60,7 +60,7 @@
 \newcommand\sufr[3][0pt]{$\rule{0pt}{\dimexpr#1+1.4ex\relax}^\frac{#2}{#3}$}
 
 
-
+\usepackage{graphicx}
 
 % Some very useful LaTeX packages include:
 % (unCOMMENT the ones you want to load)
@@ -229,7 +229,7 @@
 % generate multiline equations as well as matrices, tables, etc., of high
 % quality.
 
-
+\usepackage{subfigure}
 
 
 % *** SUBFIGURE PACKAGES ***
@@ -519,20 +519,23 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 
 \subsection{ Personalized Therapeutics: An oveview}
 
-Personalized medicine, diagnostics and therapeutics upholds the promise of accurate decision making by leveraging the power of machine learning/deep learning based Digitized Imaging and Anlytical Models (DIAM). An unprecendented paradigm shift is trending in the ease with which the medical fraternity embraces DIAMs. Promising collaborations have eased interactions among consultants and technological research groups, resulting in automated and more reproducible analytics, more specific in the area of oncological research. The higher levels of concordance, ability to deduce image patterns not visible to the trained human eye, along with reduced intra and interobserver variations and subjectivity, have emerged as promising catalysts for embracing DIAMs.
+Personalized medicine, diagnostics and therapeutics upholds the promise of accurate decision making by leveraging the power of machine learning/deep learning based Digitized Imaging and Anlytical Models (DIAM). An unprecendented paradigm shift is trending in the ease with which the medical fraternity embraces DIAMs. Promising collaborations have strengthened interactions among medical specialists and technological research groups, resulting in automated and reproducible analytics, more specific in the area of oncological research. The higher levels of concordance, ability to deduce image patterns not visible to the trained human eye, along with reduced intra and interobserver variations and subjectivity, have emerged as promising catalysts for embracing DIAMs.
 
 
-\subsection{Tumor Heterogenity in Onological Research: The Real Challenge}
+\subsection{Tumor Heterogenity in Onological Research: The Real Challenge for DIAM}
 
 Tumor heterogenity, involving a wide range of morphological phenotypes and prognostic variables, has been a great challenge in oncological diagnostics and prognosis. For example, in the much studied vertical of breast carcinoma, therapeutic decision making involves multi-modal analytics, including characterizing the morphology and grading a tumor, histopathology, immunohistochenomistry (IHC) and insitu hybridization (ISH). The biomarkers thus obtained, are evaluated clinically and analytically for their optimal clinical application. The profiling is further guided by the higher rate of concordance and robustness. With the multiparametric molecular assays being very expensive, approximate mutigene testing and surrogate definitions of intrinsic subtypes can be arrived at using IHC measurments.
 
-\subsection{Radiomics Assisted Digitization of Clinical Decision Making}
+\subsection{Radiomics Assisted Digitization: An aid for Oncological Decision Making admist heteroginity}
 
-With the wide-spread know how of computed tomography (CT), positron emission tomography (PET), and magnetic resonance imaging (MRI) imaging methods, Radiomics gathered much attention in the last few years of oncological research. Radiomics pipelines study the quantitative featurs of the image under consideration, by extracting the first-order, second-order and higher order statistical features of the Region of Interest (ROI). The hypothesis states that when a simultaneous study of multiple groups of parameters of a single lesion is performed, a filtered, appropriate and customized subset of parameters (called digital biomarkers) across groups might emerge, that can define specific indicative tissue characteristics. These digital biomarkers, when combined with the clinical biomarkers, has the long-standing potential to offer personalized therapeutics to the patient. The stability and reproducability of the Radiomics model under consideration, along with a need to standardize the assessment of digital biomarkers and cross-validation techniques, are indeed a matter that needs immediate attention before including them in the diagnostic routine. Moreover, statistical associations are, to a greater extent, confounded by the patient centric parameters like age, sex, habits, phenotypes and genotypes, that can have a profound impact on the model performance. Existing Radiomics models are predominantly applied to MRI imaging, due to its monochrome image quality and wide availability of literature in terms of statistical image analytics.
+With the wide-spread know how of computed tomography (CT), positron emission tomography (PET), and magnetic resonance imaging (MRI) imaging methods, Radiomics gathered much attention in the last few years of oncological research. Radiomics pipelines study the quantitative features of the image under consideration, by extracting the first-order, second-order and higher order statistical features of the Region of Interest (ROI). The hypothesis states that when a simultaneous study of heterogenous groups of parameters of a single lesion is performed, a filtered, appropriate and customized subset of parameters (called digital biomarkers) across groups might emerge. These digital biomarkers which define specific indicative tissue characteristics, when combined with the clinical biomarkers, have the long-standing potential to offer personalized therapeutics to the patient.
 
-\subsection{DigiOnco: A Pipeline to Unveil Digital Non-Invasive Biomarkers from Multi-parametric Radiomics Footprints}
+\subsection{DIAM for Oncology: State-of-the-Art}
+The stability and reproducability of the existing Radiomics model, along with a need to standardize the assessment of digital biomarkers and cross-validation techniques, are indeed a matter that needs immediate attention before including them in the diagnostic routine. Moreover, statistical associations are, to a greater extent, confounded by the patient centric parameters like age, sex, habits, phenotypes and genotypes, that can have a profound impact on the model performance. Existing Radiomics models, as presented in Table are predominantly applied to MRI imaging, due to it's monochrome image quality and wide availability of literature in terms of statistical image analytics.
 
-In this paper, we present DigiOnco, a novel pipeline, intricately woven with carefully chosen set of algorithms, to unveil the digital non-invasive biomarkers from multi-parameteric Radiomics footprints obtained from the PET/CT imaging techniques. The hypothesis generation and validation is performed as both internal cross-validation as well as a retrospectively validated study an independent cohort, having a set of external and independent group of patients, as part of clinical trial.
+\subsection{DigiOnco: A Pipeline to Unveil Digital Non-Invasive Biomarkers from PET/CT scans}
+
+In this paper, we present DigiOnco, a novel pipeline, intricately woven with carefully chosen set of algorithms. DigiOnco unveils the digital non-invasive biomarkers from multi-parameteric Radiomics footprints obtained from the PET/CT imaging techniques. The hypothesis generation and validation is performed as both internal cross-validation as well as a retrospectively validated study on an independent cohort, having a set of external and independent group of patients.
 
 \section{Methodology}
 
@@ -650,10 +653,10 @@ To define a Region of Interest (ROI) and to check the dimensional constrainsts o
 \hline
 Feature Class & Feature & Feature Class & Feature\\
 \hline
-& Elongation &&Autocorrelation\\
-&Flatness&&Cluster\_Prominence\\
-&Least\_Axis\_length&&Cluster\_Shade\\
-&Major\_Axis\_Length&&Cluster\_Tendency\\
+& &&Autocorrelation\\
+&&&Cluster\_Prominence\\
+&&&Cluster\_Shade\\
+&&&Cluster\_Tendency\\
 &Max\_2D\_Diameter\_Column&&Constrast\\
 &Max\_2D\_Diameter\_Row&&Correlation\\
 &Max\_2D\_Diameter\_Slice&&Difference\_Average\\
@@ -664,10 +667,10 @@ Shape&Max\_3D\_Diameter&&Difference\_Entropy\\
 &Surface\_Area&Grey Level&Joint\_Energy\\
 &Surface\_Volume&Co-occurance Matrix&Joint\_Entropy\\
 &Voxel\_Volume&&MCC\\
-&&&Maximum\_Probability\\
-&&&Sum\_Average\\
-&&&Sum\_Entropy\\
-&&&Sum\_Squares\\
+&Elongation &&Maximum\_Probability\\
+&Flatness&&Sum\_Average\\
+&Least\_Axis\_length&&Sum\_Entropy\\
+&Major\_Axis\_Length&&Sum\_Squares\\
 &&&Id\\
 &&&Idm\\
 &&&Idn\\
@@ -675,7 +678,7 @@ Shape&Max\_3D\_Diameter&&Difference\_Entropy\\
 &&&Imc1\\
 &&&Imc2\\
 \hline
-&10 Percentile&&Uniformity\\
+&10 Percentile&&\\
 &90 Percentile&&Normalized\_Uniformity\\
 &Energy&&Variance\\
 &Entropy&&High\_Run\_Emphasis\\
@@ -691,7 +694,7 @@ Statistics&Median&Length Matrix&Run\_Uniformity\\
 &Robust\_Mean\_Squared&&Short\_Run\_Emphasis\\
 &Skewness&&Short\_Run\_High\_Emphasis\\
 &Total\_Energy&&Short\_Run\_Low\_Emphasis\\
-&Uniformity&&\\
+&Uniformity&&Uniformity\\
 &Variance&&\\
 \hline
 \end{tabular}
@@ -779,9 +782,103 @@ Since the number of test subjects for each class is not similar, a threshold con
 
 \subsection{Model-based Predictions}
 
-Once the features have been narrowed down, we use a flavour of Ensemble Learning called SFORCE to classify test subjects into the predicted classes. SFORCE establishes a symbiotic relation between a predictive model (Random Forest) and an Ensemble model (AdaBoost). Both these models work on the presented data simlutaneously, aiding each other in the prediction process. Random Forests provides a strong learning system with the occasional pitfall of overfitting. The data is classified based the features which contrast the classes with the highest information content. The process of data classification using Random Forest is shown in Algorithm $\ref{alg:rf}$. AdaBoost solves the problem of overfitting by presenting the system with the misclassified data and forcing it to improve the overall performance. The two flavours of AdaBoost i.e, SAMME and SAMME.R have been descibed in Algorithms $\ref{alg:samme}$ and $\ref{alg:sammer}$. SFORCE combines the strength of Random Forests and takes care of the  drawbacks by using a Boosting algorithm to make the search process more concentrated as shown in Algorithm $\ref{alg:sforce}$. 
+Once the features have been narrowed down, the model building process begins. For any task on hand, we have a wide array of classifiers which accurately predict the nature of the test set. The set of classification algorithms considered are shown in Table $\ref{table:algos}$. In order to determine which algorithm would perform the best for our cohort dataset, we trained all the models on a standard benchmark dataset belonging to the same field i.e, the Winconsin Breast Cancer Diagnostic Dataset. The tabulated results for each algorithm is shown in Table $\ref{table:t1}$.
 
-To obtain digital bio-markers, two cases studies were conducted from the avaiable cohort dataset. The first study involved classifying test subjects as TN or non TN subjects. In the second study, the Luminal-B dataset was set aside as the test dataset due to the close resemblance of it's characteristics with those of Luminal A. The model was trained to place the test subjects into the Luminal-A class with an accuracy of 72.7\%. The results for different p-values have been descibed in Tables $\ref{tb6}$ and $\ref{tb7}$. Based on these results,  box-plots have been obtained for the selected features which act as bio-markers for future reference.
+\begin{table}[!t]
+\caption{Algorithms for traditional and ensembled classification and regression}
+\label{table:algos}
+\centering
+\scalebox{0.88}
+{
+\begin{tabular}{| l | l | l | l | }
+\hline
+\textbf{Index} & \textbf{Algorithm Name} & \textbf{Class} & \textbf{Purpose} \\
+\hline
+CT1 & Bagged Decision Tree & Traditional & Classification \\
+\hline
+CT2 & Balanced Bagged Decision Tree & Traditional &  Classification \\
+\hline
+CT3 & Bagged Random Forest & Traditional &  Classification \\
+\hline
+CT4 & Balanced Bagged Random Forest & Traditional & Classification \\
+\hline
+CT5 & Decision Tree & Traditional & Classification \\
+\hline
+CT6 & K-Nearest Neighbours & Traditional & Classification \\
+\hline
+CT7 & Neural Network & Traditional & Classification \\
+\hline
+CE1 & AdaBoost with Decision Tree & Ensemble & Classification (SR)\\
+\hline
+CE2 & AdaBoost with Decision Tree & Ensemble & Classification (S)\\
+\hline
+CE3 & AdaBoost with SVM & Ensemble & Classification (SR)\\
+\hline
+CE4 & AdaBoost with SVM & Ensemble & Classification (S)\\
+\hline
+CE5 & RUSBoost with Decision Tree & Ensemble & Classification (SR)\\
+\hline
+CE6 & RUSBoost with Decision Tree & Ensemble & Classification (S)\\
+\hline
+CE7 & RUSBoost with Random Forest & Ensemble & Classification (SR)\\
+\hline
+CE8 & RUSBoost with Random Forest & Ensemble & Classification (S)\\
+\hline
+CE9 & RUSBoost with SVM & Ensemble & Classification (SR)\\
+\hline
+CE10 & RUSBoost with SVM & Ensemble & Classification (S)\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table*}[!t]
+\caption{Performance Analysis}
+\label{table:t1}
+\centering
+\scalebox{0.7}
+{
+\begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l |}
+\hline
+{Model} & {CT1} & {CT2} & {CT3} & {CT4} & {CT5} & {CT6} & {CT7} & {CE1} & {CE2}\\
+\hline
+Accuracy Reading  & 0.9917 & 0.9870 & 0.9959 & 0.9959 & 0.9651 & 0.9949 & 1.0000 & 0.8713 & 0.9709\\
+\hline
+Time Taken & 44.2017 & 44.2017 & 27.9943 & 27.9943 & 15.5171 & 18.6339 & 26.5288 & 127.2628 & 127.2628\\
+\hline
+&&&&&&&&&\\
+\hline
+{Model} & {CE3} & {CE4} & {CE5} & {CE6} & {CE7} & {CE8} & {CE9} & {CE10} & \textbf{SFORCE (SR) with K-Fold cross validation} \\
+\hline
+Accuracy Reading  & 1.0000 & 1.0000 & 0.9870 & 0.9896 & 1.0000 & 0.9977 & 0.9920 & 0.9977 & \textbf{0.9974} \\
+\hline
+Time Taken & 54.6694 & 54.6694 & 156.7184 & 156.7184 & 24.2733 & 24.2733 & 27.1538 & 27.1538 & \textbf{570.5684} \\
+\hline
+\end{tabular}
+}
+\end{table*}
+% 
+% \begin{table*}[!t]
+% \caption{Performance Analysis II}
+% \label{table:t2}
+% \centering
+% \scalebox{0.7}
+% {
+% \begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l |}
+% \hline
+% {Model} & {CE3} & {CE4} & {CE5} & {CE6} & {CE7} & {CE8} & {CE9} & {CE10} & \textbf{SFORCE (SR)} & \textbf{SFORCE (SR) with K-Fold cross validation} \\
+% \hline
+% Accuracy Reading  & 1.0000 & 1.0000 & 0.9870 & 0.9896 & 1.0000 & 0.9977 & 0.9920 & 0.9977 & \textbf{0.9958} & \textbf{0.9974} \\
+% \hline
+% Time Taken & 54.6694 & 54.6694 & 156.7184 & 156.7184 & 24.2733 & 24.2733 & 27.1538 & 27.1538 & \textbf{220.5434} & \textbf{570.5684} \\
+% \hline
+% \end{tabular}
+% }
+% \end{table*}
+
+As determined, SFORCE (post validation) provides promising results without overfitting and hence is used to classify test subjects into the target classes. SFORCE establishes a symbiotic relation between a predictive model (Random Forest) and an Ensemble model (AdaBoost). Both these models work on the presented data simlutaneously, aiding each other in the prediction process. Random Forests provides a strong learning system with the occasional pitfall of overfitting. The data is classified based the features which contrast the classes with the highest information content. The process of data classification using Random Forest is shown in Algorithm $\ref{alg:rf}$. AdaBoost solves the problem of overfitting by presenting the system with the misclassified data and forcing it to improve the overall performance. The two flavours of AdaBoost i.e, SAMME and SAMME.R have been descibed in Algorithms $\ref{alg:samme}$ and $\ref{alg:sammer}$. SFORCE combines the strength of Random Forests and takes care of the  drawbacks by using a Boosting algorithm to make the search process more concentrated as shown in Algorithm $\ref{alg:sforce}$. 
+
+To obtain digital bio-markers, two cases studies were conducted from the avaiable cohort dataset. The first study involved classifying test subjects as TN or non TN subjects. In the second study, the Luminal-B dataset was set aside as the test dataset due to the close resemblance of it's characteristics with those of Luminal A. The model was trained to place the test subjects into the Luminal-A class with an accuracy of 72.7\%. The results for different p-values have been descibed in Tables $\ref{tb6}$ and $\ref{tb7}$. Based on these results, box-plots have been obtained for the selected features which act as bio-markers for future reference.
 
 
 \begin{table*}[!b]
@@ -792,7 +889,7 @@ To obtain digital bio-markers, two cases studies were conducted from the avaiabl
 \hline
 P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
 \hline
-1&21&81.25&90.39\\
+1&20&81.25&90.39\\
 \hline
 0.5&16&90.39&93.25\\
 \hline
@@ -809,7 +906,7 @@ P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
 \hline
 P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
 \hline
-1E-5&17&72&63.63\\
+1E-5&16&72&63.63\\
 \hline
 1E-6&15&70&72.7\\
 \hline
@@ -953,15 +1050,82 @@ P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
 % is to refer to the section immediately after \section in the above as
 % \IEEEraisesectionheading puts \section within a raised box.
 
+\section{Results and Conclusion}
 
+From the data-driven pipeline, quantifiable digital biomarkers were obtained in the form of box and whisker plots. These plots provide a convinient method of displaying the data distribution and provide insight to the oncological expert during prognosis of future test subjects. Sample box plots have been displayed in Figures $\ref{fig:sfig1}$ to $\ref{fig:sfig4}$. The entire list of digital biomarkers along with their corresponding box plots have been included in the supplementary material. Note that the number of digital biomarkers correspond to the number of the box plots which in turn corresponds to number of features selected. 
 
+The pipeline developed for this study consists of multidisciplinary stages with involvement of both Radiomics and modern statistics. While Radiomics provides a real-world application based avenue, statistical tools were used to narrow down our biomarker search process. The aim of condensing the number of features is to preserve the features with the highest level information embedded in them. 
+
+However it must also be duely noted that this pipeline is quite delicate when it comes to producing results as the errors encountered in each step are rippled onto the next stages. Furthermore an increased sample dataset size could help further fine tune the model. Additional Deep Learning frameworks can also be introduced to provide competition to the incumbent design model.  
+% 
+% \begin{figure}[t]
+% \begin{subfigure}{}
+%   \centering
+%   % include first image
+%   \includegraphics[width=.8\linewidth]{bg1.png}  
+% %   \caption{Put your sub-caption here}
+%   \label{fig:sub-first}
+% \end{subfigure}
+% \begin{subfigure}{}
+%   \centering
+%   % include second image
+%   \includegraphics[width=.8\linewidth]{bg2.png}  
+% %   \caption{Put your sub-caption here}
+%   \label{fig:sub-second}
+% \end{subfigure}
+% \begin{subfigure}{}
+%   \centering
+%   % include first image
+%   \includegraphics[width=.8\linewidth]{tg1.png}  
+% %   \caption{Put your sub-caption here}
+%   \label{fig:sub-first}
+% \end{subfigure}
+% \begin{subfigure}{}
+%   \centering
+%   % include second image
+%   \includegraphics[width=.8\linewidth]{tg2.png}  
+% %   \caption{Put your sub-caption here}
+%   \label{fig:sub-second}
+% \end{subfigure}
+% \caption{Sample Box Plots}
+% \end{figure}
+% 
+
+\begin{figure}
+\begin{subfigure}{}
+  \centering
+  \includegraphics[width=8cm]{bg1.png}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}%
+\begin{subfigure}{}
+  \centering
+  \includegraphics[width=8cm]{bg2.png}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{}
+  \centering
+  \includegraphics[width=8cm]{tg1.png}
+  \caption{}
+  \label{fig:sfig3}
+\end{subfigure}%
+\begin{subfigure}{}
+  \centering
+  \includegraphics[width=8cm]{tg2.png}
+  \caption{}
+  \label{fig:sfig4}
+\end{subfigure}
+% \caption{plots of....}
+% \label{fig:fig}
+\end{figure}
 
 % The very first letter is a 2 line initial drop letter followed
 % by the rest of the first word in caps (small caps for compsoc).
 % 
 % form to use if the first word consists of a single letter:
 % \IEEEPARstart{A}{demo} file is ....
-% 
+%   
 % form to use if you need the single drop letter followed by
 % normal text (unknown if ever used by the IEEE):
 % \IEEEPARstart{A}{}demo file is ....

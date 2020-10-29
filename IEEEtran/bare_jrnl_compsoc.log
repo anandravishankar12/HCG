@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.14)  28 OCT 2020 11:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.14)  29 OCT 2020 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -173,6 +173,30 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen167
+\Gin@req@width=\dimen168
+)
 (/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
@@ -183,10 +207,6 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks20
 )
 \c@ALC@unique=\count194
 \c@ALC@line=\count195
@@ -210,19 +230,39 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@algorithm=\toks23
 \c@algorithm=\count199
 )
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip55
+\subfigcapskip=\skip56
+\subfigcaptopadj=\dimen169
+\subfigbottomskip=\skip57
+\subfigcapmargin=\dimen170
+\subfiglabelskip=\skip58
+\c@subfigure=\count266
+\c@lofdepth=\count267
+\c@subtable=\count268
+\c@lotdepth=\count269
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip59
+\subfig@bottom=\skip60
+)
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen167
-\captionmargin@=\dimen168
-\captionwidth=\dimen169
-\caption@tempdima=\dimen170
-\caption@indent=\dimen171
-\caption@parindent=\dimen172
-\caption@hangindent=\dimen173
+\captionmargin=\dimen171
+\captionmargin@=\dimen172
+\captionwidth=\dimen173
+\caption@tempdima=\dimen174
+\caption@indent=\dimen175
+\caption@parindent=\dimen176
+\caption@hangindent=\dimen177
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEta
@@ -236,49 +276,23 @@ x {\normalfont \sffamily \footnotesize {#1.}\nobreakspace }\parbox [t]{\hsize }
 x to\hsize {\normalfont \sffamily \footnotesize \box \@tempboxa \hfil }\fi \fi 
  on input line 1082.
 )
-\c@KVtest=\count266
-\sf@farskip=\skip55
-\sf@captopadj=\dimen174
-\sf@capskip=\skip56
-\sf@nearskip=\skip57
-\c@subfigure=\count267
-\c@subfigure@save=\count268
-\c@lofdepth=\count269
-\c@subtable=\count270
-\c@subtable@save=\count271
-\c@lotdepth=\count272
-\sf@top=\skip58
-\sf@bottom=\skip59
+\c@KVtest=\count270
+\sf@farskip=\skip61
+\sf@captopadj=\dimen178
+\sf@capskip=\skip62
+\sf@nearskip=\skip63
+\sf@top=\skip64
+\sf@bottom=\skip65
 )
 (/usr/share/texlive/texmf-dist/tex/latex/sttools/stfloats.sty
 Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip sett
 ings
-\@dblbotnum=\count273
-\c@dblbotnumber=\count274
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 105.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen175
-\Gin@req@width=\dimen176
+\@dblbotnum=\count271
+\c@dblbotnumber=\count272
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count275
+\l__kernel_color_stack_int=\count273
 \l__pdf_internal_box=\box51
 )
 (./bare_jrnl_compsoc.aux)
@@ -300,21 +314,18 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 374.
 LaTeX Font Info:    ... okay on input line 374.
 
 -- Lines per column: 61 (exact).
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: End \AtBeginDocument code.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count276
-\scratchdimen=\dimen177
+\scratchcounter=\count274
+\scratchdimen=\dimen179
 \scratchbox=\box52
-\nofMPsegments=\count277
-\nofMParguments=\count278
+\nofMPsegments=\count275
+\nofMParguments=\count276
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count279
-\MPscratchDim=\dimen178
-\MPnumerator=\count280
-\makeMPintoPDFobject=\count281
+\MPscratchCnt=\count277
+\MPscratchDim=\dimen180
+\MPnumerator=\count278
+\makeMPintoPDFobject=\count279
 \everyMPtoPDFconversion=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -325,6 +336,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 4
 90.
 
@@ -342,17 +356,11 @@ LaTeX Font Info:    Trying to load font information for U+pzd on input line 490
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
-Underfull \hbox (badness 2293) in paragraph at lines 535--536
-\OT1/ppl/m/n/9.53561 in-tri-cately wo-ven with care-fully cho-sen set of al-go-
-
+Underfull \hbox (badness 2057) in paragraph at lines 538--539
+\OT1/ppl/m/n/9.53561 Di-giOnco un-veils the dig-i-tal non-invasive biomark-ers
  []
 
-
-Underfull \hbox (badness 1810) in paragraph at lines 535--536
-\OT1/ppl/m/n/9.53561 rithms, to un-veil the dig-i-tal non-invasive biomark-ers
- []
-
-LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 539
+LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 542
 .
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -361,51 +369,86 @@ LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 539
 <img1.png, id=11, 1594.95876pt x 310.15875pt>
 File: img1.png Graphic file (type png)
 <use img1.png>
-Package pdftex.def Info: img1.png  used on input line 543.
+Package pdftex.def Info: img1.png  used on input line 546.
 (pdftex.def)             Requested size: 433.62pt x 84.32135pt.
 <im.png, id=13, 1692.3225pt x 593.21625pt>
 File: im.png Graphic file (type png)
 <use im.png>
-Package pdftex.def Info: im.png  used on input line 580.
+Package pdftex.def Info: im.png  used on input line 583.
 (pdftex.def)             Requested size: 542.025pt x 189.996pt.
 
-Overfull \hbox (24.09pt too wide) in paragraph at lines 580--581
+Overfull \hbox (24.09pt too wide) in paragraph at lines 583--584
  [][] 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-89.
+92.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (4.51617pt too wide) in paragraph at lines 596--596
+Overfull \hbox (4.51617pt too wide) in paragraph at lines 599--599
 []        \OT1/pcr/m/n/9.53561 nrrd = np.zeros(shape, dtype=np.bool)[] 
  []
 
-LaTeX Font Info:    Calculating math sizes for size <5.62097> on input line 621
+LaTeX Font Info:    Calculating math sizes for size <5.62097> on input line 624
 .
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <2.81049> not available
-(Font)              size <5> substituted on input line 621.
+(Font)              size <5> substituted on input line 624.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.81049> not available
-(Font)              size <5> substituted on input line 621.
+(Font)              size <5> substituted on input line 624.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.81049> not available
-(Font)              size <5> substituted on input line 621.
+(Font)              size <5> substituted on input line 624.
 
-[2 <./img1.png>] [3 <./im.png>]
-LaTeX Font Info:    Trying to load font information for OMS+ppl on input line 8
-30.
+[2 <./img1.png>]
+Overfull \hbox (6.71329pt too wide) in paragraph at lines 832--833
+ [][] 
+ []
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
+[3 <./im.png>]
+LaTeX Font Info:    Trying to load font information for OMS+ppl on input line 9
+27.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <8.03> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 830.
- [4] [5] [6]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 927.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+Underfull \vbox (badness 2591) has occurred while \output is active []
+
+ [5]
+<bg1.png, id=44, 1204.5pt x 644.4075pt>
+File: bg1.png Graphic file (type png)
+<use bg1.png>
+Package pdftex.def Info: bg1.png  used on input line 1097.
+(pdftex.def)             Requested size: 227.62204pt x 121.77007pt.
+<bg2.png, id=45, 1201.48875pt x 644.4075pt>
+File: bg2.png Graphic file (type png)
+<use bg2.png>
+Package pdftex.def Info: bg2.png  used on input line 1103.
+(pdftex.def)             Requested size: 227.62204pt x 122.07487pt.
+<tg1.png, id=46, 1192.455pt x 644.4075pt>
+File: tg1.png Graphic file (type png)
+<use tg1.png>
+Package pdftex.def Info: tg1.png  used on input line 1109.
+(pdftex.def)             Requested size: 227.62204pt x 123.009pt.
+<tg2.png, id=47, 1199.48125pt x 644.4075pt>
+File: tg2.png Graphic file (type png)
+<use tg2.png>
+Package pdftex.def Info: tg2.png  used on input line 1115.
+(pdftex.def)             Requested size: 227.62204pt x 122.28137pt.
+
+[6] [7] [8
+
+
+ <./bg1.png> <./bg2.png> <./tg1.png> <./tg2.png>]
 (./bare_jrnl_compsoc.aux)
 
 LaTeX Font Warning: Size substitutions with differences
@@ -413,13 +456,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 3988 strings out of 481239
- 63410 string characters out of 5920376
- 348786 words of memory out of 5000000
- 19203 multiletter control sequences out of 15000+600000
+ 4132 strings out of 481239
+ 65348 string characters out of 5920376
+ 365117 words of memory out of 5000000
+ 19337 multiletter control sequences out of 15000+600000
  582386 words of font info for 126 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,17n,42p,1576b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,17n,42p,1187b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
@@ -440,10 +483,10 @@ etic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a
 hare/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on bare_jrnl_compsoc.pdf (6 pages, 505528 bytes).
+Output written on bare_jrnl_compsoc.pdf (8 pages, 569335 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
