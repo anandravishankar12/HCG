@@ -477,7 +477,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-With the advent of modern medical scanning techniques such as PET-CT scans, the amount of information-rich medical data generated every day has risen exponentially. Medical centres are often overwhelmed with the influx of copius medical data and require a helping hand. The field of Machine Learning (ML) and Data Science provides assistance to those fields which contains an abundance of data and aims to detect inherent patterns from the datasets provided. Although ML tools can never replace the expertise offered by specialists, these tools when combined with sister fields like Radiomics, create a dynamic pipeline for future datasets. This pipeline accepts medical images as an input, exatracts Radiomics features from it, performs pre-processing tasks and applys ML tools for classification of the data into target classes. The final result so obtained consists of reduced graphical representations which provide insight into the mapping between the image feature space and taget class. Thw work described in this paper outlines a multi-stage process with emphasis on feature extraction and using them to reduce the target class space for oncological patients. 
+Digital Imaging and Analytical Models (DIAMs) assisted Radiomics has emerged as a promising tool towards offering personalized therapeutics to patients. Oncological researchers seem to have benefited the most from the automated and reproducible analytics that DIAMs offer. However, statistical deductions and associations of inferences from DIAMs have to be cross-validated with a higher rate of concordance and robustness. With the amount of digital healthcare data amounting to 2314 Exabytes as on date, there is a dire need for standardization of DIAMs applied to cohort based study with heterogeneous patient centric parameters, including age, phenotypes and genotypes. In this paper, we present DigiOnco, a pipeline with a novel ensemble of algorithms that offer accuracy levels ranging from 72.7\% to 93.25\%. The hypothesis generation and validation of derived digital biomarkers are done both as internal cross validation as well as a retrospectively validated study on an independent cohort. Considering the integration of our current findings with follow-up studies branching into other medical sub-doamins, the potential of homogenizing Machine Learning with data intensive fields is huge.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -517,7 +517,7 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 
 \IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
 
-\subsection{ Personalized Therapeutics: An oveview}
+\subsection{Personalized Therapeutics: An oveview}
 
 Personalized medicine, diagnostics and therapeutics upholds the promise of accurate decision making by leveraging the power of machine learning/deep learning based Digitized Imaging and Anlytical Models (DIAM). An unprecendented paradigm shift is trending in the ease with which the medical fraternity embraces DIAMs. Promising collaborations have strengthened interactions among medical specialists and technological research groups, resulting in automated and reproducible analytics, more specific in the area of oncological research. The higher levels of concordance, ability to deduce image patterns not visible to the trained human eye, along with reduced intra and interobserver variations and subjectivity, have emerged as promising catalysts for embracing DIAMs.
 
@@ -533,13 +533,18 @@ With the wide-spread know how of computed tomography (CT), positron emission tom
 \subsection{DIAM for Oncology: State-of-the-Art}
 The stability and reproducability of the existing Radiomics model, along with a need to standardize the assessment of digital biomarkers and cross-validation techniques, are indeed a matter that needs immediate attention before including them in the diagnostic routine. Moreover, statistical associations are, to a greater extent, confounded by the patient centric parameters like age, sex, habits, phenotypes and genotypes, that can have a profound impact on the model performance. Existing Radiomics models, as presented in Table are predominantly applied to MRI imaging, due to it's monochrome image quality and wide availability of literature in terms of statistical image analytics.
 
+The predominant issue in reproducing and comparing results across multiple studies stems from the challenge of having enriched data. Having a common data gathering point can provide an extensive and accurate comparison of different studies conducted till date. This need-of-the-hour problem needs to dealt with a collaborative approach. As per a 2020 Stanford study, the amount of healthcare data including the Radiomics and Radiogenomics analytics data is growing at a steady rate of 48\% which indicates the oppertuninty for collaboration. s
+
 \subsection{DigiOnco: A Pipeline to Unveil Digital Non-Invasive Biomarkers from PET/CT scans}
 
 In this paper, we present DigiOnco, a novel pipeline, intricately woven with carefully chosen set of algorithms. DigiOnco unveils the digital non-invasive biomarkers from multi-parameteric Radiomics footprints obtained from the PET/CT imaging techniques. The hypothesis generation and validation is performed as both internal cross-validation as well as a retrospectively validated study on an independent cohort, having a set of external and independent group of patients.
 
-\section{Methodology}
+\section{DigiOnco: Radiomics Pipeline}
+% As the amount of medical imaging data generated per day grows at an exponential rate, brand new technologies have to be developed to cope up with the copius exabytes of data. Machine learning tools provide us with the capabilities to handle both structured and unstructured datasets. These tools can be configured to analyze patterns inherent in the data and make accurate predictions based on the features extracted. 
+\subsection{DigiOnco Architecture}
 
-As the amount of generated per day grows at an exponential rate, brand new technologies have to be developed to cope up with the copius exabytes of data. Machine learning tools provide us with the capabilities to handle both structured and unstructured datasets. These tools can be configured to analyze patterns inherent in the data and make accurate predictions based on the information obtained. This concept is a reality for almost all sectors today. As per a 2020 Stanford study, the amount of healthcare data generated will be around 2,314 exabytes with a steady growth of 48\%. The pipeline  developed for this project has been depicted in Figure $\ref{img1}$. The remainder of the section descibes each individual step in detail.
+
+The pipeline developed for this project has been depicted in Figure $\ref{img1}$. The remainder of the section descibes each individual step in detail.
 
 \begin{figure*}[!b]
 \centering
@@ -553,12 +558,13 @@ As the amount of generated per day grows at an exponential rate, brand new techn
 In order to obtain distinct yet comparable subjects, a cohort dataset of 89 patients was selected in this study. The dataset consisted of four intrinsic molecular subtypes of breast cancer which are contrasted on the genes a cancerous cell expresses. The dataset has been descibed in Table $\ref{tb1}$.
 
 \begin{table*}[!b]
+\scriptsize
 \centering
 \caption{Data Description}
 \label{tb1}
 \begin{tabular}{| c | c | c | c | c | c |}
 \hline
-Subtype & Number of paitents & Estrogen Receptor & Progesterone Receptor & HER2 & KI67 range\\
+\textbf{Subtype} & \textbf{Number of paitents} & \textbf{Estrogen Receptor} & \textbf{Progesterone Receptor} & \textbf{HER2} & \textbf{KI67 range}\\
 \hline
 Luminal A & 29 & + & +/- & - & [5,20] \\
 Luminal B & 36 & + & +/- & +/- & [25,80] \\
@@ -581,7 +587,7 @@ For each of the patient, a CT scan was conducted to obtain cross-sectional image
 \begin{figure*}[!b]
 \centering
 \includegraphics[width=7.5in]{im.png}
-\caption{untitled}
+\caption{Data-Flow}
 \label{img2}
 \end{figure*}
 
@@ -606,32 +612,35 @@ Information extraction from images directly has certain drawbacks. For eg, consi
 
 To tackle this issue, we have utilized radiomics algorithms to extract feature sets from the medical images to reveal characteristics which are not captured by trained networks. The open-source Python library, PyRadiomics was used to mine out the required feature set. Before the actual extraction could be performed, a set of filters were applied on the NRRD to provide a comprehensive view of the data. The filters applied are listed in table $\ref{tb2}$. 
 
-\begin{table*}[!b]
+\begin{table}[!b]
+\scriptsize
 \centering
 \caption{Applied Filters}
 \label{tb2}
-\begin{tabular}{| c | c | c |}
+\begin{tabular}{| l | l | l |}
 \hline
-Filter & Description & Equation\\
+\textbf{Filter} & \textbf{Description} & \textbf{Equation}\\
 \hline
-Wavelet & Selective emphasizing or de-emphasizing of image in selected spatial frequency domain & -\\
-(9)&&\\
+Wavelet & Selective emphasizing  & -\\
+&de-emphasizing of image&\\
 \hline
 Square & Square the image intensities & x := (cx)\textsuperscript{2}\\
 \hline
 Square Root & Compute root of image intensities & x := $\sqrt{cx}$\\
 \hline
-Laplacian of Gaussian & Applies a Laplacian of Gaussian filter to the input image  & $\frac{1}{(\sigma\sqrt{2\pi})\textsuperscript{3}}e\textsuperscript{-\sufr{x\textsuperscript{2}+y\textsuperscript{2}+z\textsuperscript{2}}{2\sigma\textsuperscript{2}}}$\\
-$\sigma$ = 1, 2, 3&and yields a derived image for each sigma value specified&\\
+Laplacian of & Applies a Laplacian of Gaussian & $\frac{1}{(\sigma\sqrt{2\pi})\textsuperscript{3}}e\textsuperscript{-\sufr{x\textsuperscript{2}+y\textsuperscript{2}+z\textsuperscript{2}}{2\sigma\textsuperscript{2}}}$\\
+Gaussian &fliter for a $\sigma$ value&\\
 \hline
-Logarithm & Computes the natural logarithm of image intensities & c$\log(x+1)$\\
+Logarithm & Computes the natural logarithm& c$\log(x+1)$\\
+& of image intensities &\\
 \hline
-Exponential & Computes the exponential of the original image & e\textsuperscript{cx}\\
+Exponential & Computes the exponential of & $e\textsuperscript{cx}$\\
+&the original image &\\
 \hline
 Gradient & Computes the gradient of the image & -\\
 \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
 PyRadiomics obtains radiomics features from the CT scan results in a stagewise manner. Initially the images are loaded into the platform by using SimpleITK which supports a gamut of image types along wit basic image processing techniques. In the next step, the filters descibed in $\ref{tb2}$ are applied using SimpleITK, PyWavelets, and Numpy. Finally, statistical and texture classes are used for feature extraction. The features so obtained, are stored in a dictionary format which suitable labels. 
 
@@ -645,29 +654,31 @@ To define a Region of Interest (ROI) and to check the dimensional constrainsts o
 % \label{img3}
 % \end{figure*}
 
-\begin{table*}[!b]
+\begin{table}[!b]
+\scriptsize
 \centering
 \caption{Features-I}
 \label{tb3}
-\begin{tabular}{| c | c || c | c |}
+\begin{tabular}{| l | l | l | l |}
 \hline
-Feature Class & Feature & Feature Class & Feature\\
+\textbf{Feature} & \textbf{Feature} & \textbf{Feature} & \textbf{Feature}\\
+\textbf{Class}&&\textbf{Class}&\\
 \hline
 & &&Autocorrelation\\
 &&&Cluster\_Prominence\\
 &&&Cluster\_Shade\\
 &&&Cluster\_Tendency\\
-&Max\_2D\_Diameter\_Column&&Constrast\\
-&Max\_2D\_Diameter\_Row&&Correlation\\
-&Max\_2D\_Diameter\_Slice&&Difference\_Average\\
-Shape&Max\_3D\_Diameter&&Difference\_Entropy\\
+&Max\_2D\_Diameter\_C&&Constrast\\
+&Max\_2D\_Diameter\_R&&Correlation\\
+&Max\_2D\_Diameter\_S&&Difference\_Average\\
+&Max\_3D\_Diameter&&Difference\_Entropy\\
 &Mesh\_Volume&&Difference\_Variance\\
-&Minor\_Axis\_Length&&Inverse\_Variance\\
+Shape&Minor\_Axis\_Length&&Inverse\_Variance\\
 &Sphercity&&Joint\_Average\\
-&Surface\_Area&Grey Level&Joint\_Energy\\
-&Surface\_Volume&Co-occurance Matrix&Joint\_Entropy\\
-&Voxel\_Volume&&MCC\\
-&Elongation &&Maximum\_Probability\\
+&Surface\_Area&Grey&Joint\_Energy\\
+&Surface\_Volume&Level&Joint\_Entropy\\
+&Voxel\_Volume&Co-occurance&MCC\\
+&Elongation &Matrix&Maximum\_Probability\\
 &Flatness&&Sum\_Average\\
 &Least\_Axis\_length&&Sum\_Entropy\\
 &Major\_Axis\_Length&&Sum\_Squares\\
@@ -685,12 +696,12 @@ Shape&Max\_3D\_Diameter&&Difference\_Entropy\\
 &Interquartile\_Range&&Long\_Run\_Emphasis\\
 &Kurtosis&&Long\_High\_Run\_Emphasis\\
 &Maximum&&Long\_Low\_Run\_Emphasis\\
-&Mean\_Absolute\_Deviation&&Low\_Run\_Emphasis\\
-First Order&Mean&Grey Level Run&Run\_Entropy\\
-Statistics&Median&Length Matrix&Run\_Uniformity\\
-&Minimum&&Run\_Uniformity\_Normalized\\
-&Range&&Run\_Percentage\\
-&Robust\_Mean\_Deviation&&Run\_Variance\\
+First &Mean\_Absolute\_Deviation&&Low\_Run\_Emphasis\\
+Order&Mean&Grey&Run\_Entropy\\
+Statistics&Median& Level&Run\_Uniformity\\
+&Minimum& Run &Normalized\_Uniformity\\
+&Range&Length &Run\_Percentage\\
+&Robust\_Mean\_Deviation&Matrix&Run\_Variance\\
 &Robust\_Mean\_Squared&&Short\_Run\_Emphasis\\
 &Skewness&&Short\_Run\_High\_Emphasis\\
 &Total\_Energy&&Short\_Run\_Low\_Emphasis\\
@@ -698,15 +709,16 @@ Statistics&Median&Length Matrix&Run\_Uniformity\\
 &Variance&&\\
 \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{table*}[!b]
+\begin{table}[!b]
+\scriptsize
 \centering
 \caption{Features-II}
 \label{tb4}
-\begin{tabular}{| c | c |}
+\begin{tabular}{| l | l |}
 \hline
-Feature Class & Feature\\
+\textbf{Feature Class} & \textbf{Feature}\\
 \hline
 &Non\_Uniformity\\
 &Non\_Uniformity\_Normalized\\
@@ -715,11 +727,11 @@ Feature Class & Feature\\
 &Large\_Area\_Emphasis\\
 &Large\_Area\_High\_Level\_Emphasis\\
 &Large\_Area\_Low\_Level\_Emphasis\\
-Grey Level Size&Low\_Zone\_Emphasis\\
-Zone Matrix&Zone\_Non\_Uniformity\\
-&Zone\_Non\_Uniformity\_Normalized\\
-&Small\_Area\_Emphasis\\
-&Small\_Area\_High\_Level\_Emphasis\\
+Grey&Low\_Zone\_Emphasis\\
+Level&Zone\_Non\_Uniformity\\
+Size&Zone\_Non\_Uniformity\_Normalized\\
+Zone&Small\_Area\_Emphasis\\
+Matrix&Small\_Area\_High\_Level\_Emphasis\\
 &Small\_Area\_Low\_Level\_Emphasis\\
 &Zone\_Entropy\\
 &Zone\_Percentage\\
@@ -731,23 +743,23 @@ Zone Matrix&Zone\_Non\_Uniformity\\
 &Dependence\_Variance\\
 &GL\_Non\_Uniformity\\
 &GL\_Variance\\
-Gray Level Size&High\_Emphasis\\
-Zone Matrix&Large\_Dependence\_Emphasis\\
-&Large\_Dependence\_High\_Emphasis\\
-&Large\_Dependence\_Low\_Emphasis\\
-&Low\_Emphasis\\
+Gray &High\_Emphasis\\
+Level &Large\_Dependence\_Emphasis\\
+Size&Large\_Dependence\_High\_Emphasis\\
+Zone&Large\_Dependence\_Low\_Emphasis\\
+Matrix&Low\_Emphasis\\
 &Small\_Dependence\_Emphasis\\
 &Small\_Dependence\_High\_Emphasis\\
 &Small\_Dependence\_Low\_Emphasis\\
 \hline
-&Busyness\\
-Neighbouring Gray Tone&Coarseness\\
-Difference Matrix&Complexity\\
-&Constrast\\
-&Strength\\
+Neighbouring&Busyness\\
+Gray&Coarseness\\
+Tone&Complexity\\
+Difference&Constrast\\
+Matrix&Strength\\
 \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
 Therefore for each patient, the total number of features obtained are number of filters $\times$ number of features i.e, 17 $\times$ 100 = 1700 features. Once the entire feature set has been collected, the classification task can be started. 
 
@@ -755,28 +767,34 @@ Therefore for each patient, the total number of features obtained are number of 
 
 From the 1700 features collected, not all of the features will contribute equally in the classification function. The process of preparing the input data for pattern learning by removing redundant characteristics, reducing noises and normalizing, selecting, and extracting features is termed as Data Pre-Processing. Multiple data pre-processing techniques have been applied to the feature set. These techniques have been descibed in Table $\ref{tb5}$.
 
-\begin{table*}[!b]
+\begin{table}[!b]
 \centering
 \caption{Preprocessing techniques}
 \label{tb5}
-\begin{tabular}{| c | c |}
+\begin{tabular}{| l | l |}
 \hline
-Method & Description\\
+\textbf{Method} & \textbf{Description}\\
 \hline
-Missing Value Ratio & Removal of data columns where the ratio of missing values is greater than a set threshold \\
+Missing Value Ratio & Removal of data columns where the  \\
+&number of missing values $\geq$ threshold\\
 \hline
-Low Varience Filter & Removal of normalized data columns where the variance is lesser than a set threshold\\
+Low Varience Filter & Removal of normalized data columns \\
+&where the variance $\leq$ threshold\\
 \hline
-Highest correlation filter & Removal of data columns which are highly correlated leading to redundancy\\
+Highest correlation  & Removal of data columns which are \\
+filter&highly correlated leading to redundancy\\
 \hline
-Principle Component Analysis & Transformation of data to maximize variance under constraints\\
+Principle & Transformation of data to\\
+Component Analysis &maximize $\sigma\textsuperscript{2}$ under constraints\\
 \hline
-Fast Independent Component Analysis & Decomposition of signals to focus on mutual independence of data \\
+Fast Independent & Decomposition of signals to focus  \\
+Component Analysis &on mutual independence of data\\
 \hline
-Factor Analysis & Generating a common feature by reducing number of common variables \\
+Factor Analysis & Generating a common feature by \\
+&reducing number of common variables \\
 \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
 Since the number of test subjects for each class is not similar, a threshold confidence level must be specified during the hypothesis testing phase. A 'P-value' is utilized in hypothesis testing to test the hypothesis under observation. A lower p-value corresponds to a higher confidence level in the predictions. The number of features selected after the pre-processing step is directly proportional to the p-value as a higher p-value will be more accomodating of even unimportant features. A grid for different p-values was created and the corresponding number of features were obtained.   
 
@@ -785,10 +803,10 @@ Since the number of test subjects for each class is not similar, a threshold con
 Once the features have been narrowed down, the model building process begins. For any task on hand, we have a wide array of classifiers which accurately predict the nature of the test set. The set of classification algorithms considered are shown in Table $\ref{table:algos}$. In order to determine which algorithm would perform the best for our cohort dataset, we trained all the models on a standard benchmark dataset belonging to the same field i.e, the Winconsin Breast Cancer Diagnostic Dataset. The tabulated results for each algorithm is shown in Table $\ref{table:t1}$.
 
 \begin{table}[!t]
+\scriptsize
 \caption{Algorithms for traditional and ensembled classification and regression}
 \label{table:algos}
 \centering
-\scalebox{0.88}
 {
 \begin{tabular}{| l | l | l | l | }
 \hline
@@ -833,26 +851,26 @@ CE10 & RUSBoost with SVM & Ensemble & Classification (S)\\
 \end{table}
 
 \begin{table*}[!t]
+\scriptsize
 \caption{Performance Analysis}
 \label{table:t1}
 \centering
-\scalebox{0.7}
 {
 \begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l | l |}
 \hline
-{Model} & {CT1} & {CT2} & {CT3} & {CT4} & {CT5} & {CT6} & {CT7} & {CE1} & {CE2}\\
+\textbf{Model} & {CT1} & {CT2} & {CT3} & {CT4} & {CT5} & {CT6} & {CT7} & {CE1} & {CE2}\\
 \hline
-Accuracy Reading  & 0.9917 & 0.9870 & 0.9959 & 0.9959 & 0.9651 & 0.9949 & 1.0000 & 0.8713 & 0.9709\\
+\textbf{Accuracy Reading}& 0.9917 & 0.9870 & 0.9959 & 0.9959 & 0.9651 & 0.9949 & 1.0000 & 0.8713 & 0.9709\\
 \hline
-Time Taken & 44.2017 & 44.2017 & 27.9943 & 27.9943 & 15.5171 & 18.6339 & 26.5288 & 127.2628 & 127.2628\\
+\textbf{Time Taken}& 44.2017 & 44.2017 & 27.9943 & 27.9943 & 15.5171 & 18.6339 & 26.5288 & 127.2628 & 127.2628\\
 \hline
 &&&&&&&&&\\
 \hline
-{Model} & {CE3} & {CE4} & {CE5} & {CE6} & {CE7} & {CE8} & {CE9} & {CE10} & \textbf{SFORCE (SR) with K-Fold cross validation} \\
+\textbf{Model} & {CE3} & {CE4} & {CE5} & {CE6} & {CE7} & {CE8} & {CE9} & {CE10} & \textbf{SFORCE (SR) with K-Fold cross validation} \\
 \hline
-Accuracy Reading  & 1.0000 & 1.0000 & 0.9870 & 0.9896 & 1.0000 & 0.9977 & 0.9920 & 0.9977 & \textbf{0.9974} \\
+\textbf{Accuracy Reading}& 1.0000 & 1.0000 & 0.9870 & 0.9896 & 1.0000 & 0.9977 & 0.9920 & 0.9977 & \textbf{0.9974} \\
 \hline
-Time Taken & 54.6694 & 54.6694 & 156.7184 & 156.7184 & 24.2733 & 24.2733 & 27.1538 & 27.1538 & \textbf{570.5684} \\
+\textbf{Time Taken}& 54.6694 & 54.6694 & 156.7184 & 156.7184 & 24.2733 & 24.2733 & 27.1538 & 27.1538 & \textbf{570.5684} \\
 \hline
 \end{tabular}
 }
@@ -881,13 +899,15 @@ As determined, SFORCE (post validation) provides promising results without overf
 To obtain digital bio-markers, two cases studies were conducted from the avaiable cohort dataset. The first study involved classifying test subjects as TN or non TN subjects. In the second study, the Luminal-B dataset was set aside as the test dataset due to the close resemblance of it's characteristics with those of Luminal A. The model was trained to place the test subjects into the Luminal-A class with an accuracy of 72.7\%. The results for different p-values have been descibed in Tables $\ref{tb6}$ and $\ref{tb7}$. Based on these results, box-plots have been obtained for the selected features which act as bio-markers for future reference.
 
 
-\begin{table*}[!b]
+\begin{table}[!b]
+\scriptsize
 \centering
 \caption{TN vs Non-TN}
 \label{tb6}
 \begin{tabular}{| c | c | c | c |}
 \hline
-P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
+\textbf{P-Value} & \textbf{Number of} & \textbf{Accuracy} & \textbf{Accuracy}\\
+&Features&(SAMME)&(SAMME.R)\\
 \hline
 1&20&81.25&90.39\\
 \hline
@@ -896,24 +916,26 @@ P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
 0.1&6&75&81.25\\
 \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{table*}[!b]
+\begin{table}[!b]
+\scriptsize
 \centering
 \caption{HER vs Luminal-A vs TN}
 \label{tb7}
 \begin{tabular}{| c | c | c | c |}
 \hline
-P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
+\textbf{P-Value} & \textbf{Number of} & \textbf{Accuracy} & \textbf{Accuracy}\\
+&Features&(SAMME)&(SAMME.R)\\
 \hline
 1E-5&16&72&63.63\\
 \hline
 1E-6&15&70&72.7\\
 \hline
-17-5&13&72.7&70\\
+1E-7&13&72.7&70\\
 \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
 % \begin{algorithm}
 % \begin{algorithmic}[1]
@@ -1025,7 +1047,7 @@ P-Value & Number of features & SAMME Accuracy & SAMME.R Accuracy\\
 \end{algorithm}
 
 \begin{algorithm}[!t]
-\caption{untitled}\label{main}
+\caption{DigiOnco: Algorithmic Flow}\label{main}
 \begin{algorithmic}[1]
 \footnotesize
 \STATE //Input Image dataset $D\textsubscript{n}$ and masks $D\textsubscript{m}$ 
@@ -1120,6 +1142,19 @@ However it must also be duely noted that this pipeline is quite delicate when it
 % \label{fig:fig}
 \end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=3in]{acc1.png}
+\caption{TN vs Non-TN Classification Accuracies}
+\label{img5}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=3in]{acc2.png}
+\caption{TN vs Luminal-A vs HER Classification Accuracies}
+\label{img6}
+\end{figure}
 % The very first letter is a 2 line initial drop letter followed
 % by the rest of the first word in caps (small caps for compsoc).
 % 
